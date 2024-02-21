@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>交配情報詳細リスト - 2月4日</title>
+    <link rel="stylesheet" href="destyle.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>交配データ管理アプリ</h1>
+    </header>
+
+    <main class="main">
+        <!-- 日付の表示 -->
+        <div class="date-display">
+            <h2>2月4日</h2>
+        </div>
+
+        <div class="breeding-info-container">
+            <!-- 以下のリストはサーバーサイドで動的に生成されることを想定しています -->
+            <!-- {% for breeding_info in breeding_infos %} -->
+            <div class="breeding-info">
+                <a href="#male-plant-detail" class="plant-image-link">
+                    <img src="male-plant.jpg" alt="雄株の写真" class="plant-image">
+                </a>
+                <a href="#female-plant-detail" class="plant-image-link">
+                    <img src="female-plant.jpg" alt="雌株の写真" class="plant-image">
+                </a>
+                <div class="offspring-images">
+                    <!-- 子株の写真は複数存在する可能性があるため、こちらもサーバーサイドで動的に生成 -->
+                    <!-- {% for offspring in breeding_info.offspring %} -->
+                    <a href="#offspring-plant-detail" class="plant-image-link">
+                        <img src="offspring-plant.jpg" alt="子株の写真" class="plant-image">
+                    </a>
+                    <!-- {% endfor %} -->
+                </div>
+            </div>
+            <hr class="separator"> <!-- リスト間の横線 -->
+            <!-- {% endfor %} -->
+        </div>
+    </main>
+</body>
+</html>
+

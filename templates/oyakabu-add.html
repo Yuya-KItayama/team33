@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>親株登録画面</title>
+    <link rel="stylesheet" href="destyle.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>交配データ管理アプリ</h1>
+    </header>
+
+    <main class="main parent-plant-registration">
+        <div class="image-upload-section">
+            <img id="image-preview" src="#" alt="アップロードされた画像プレビュー" class="image-preview">
+            <label for="image-upload" class="upload-label">画像をアップロード</label>
+            <input type="file" id="image-upload" class="image-upload" accept="image/*">
+        </div>
+        <div class="plant-info-section">
+            <select class="plant-info-select">
+                <option value="">花色を選択</option>
+                <!-- 花色の選択肢 -->
+            </select>
+            <select class="plant-info-select">
+                <option value="">模様を選択</option>
+                <!-- 模様の選択肢 -->
+            </select>
+            <select class="plant-info-select">
+                <option value="">咲き方を選択</option>
+                <!-- 咲き方の選択肢 -->
+            </select>
+            <select class="plant-info-select">
+                <option value="">形状を選択</option>
+                <!-- 形状の選択肢 -->
+            </select>
+            <textarea class="remarks" placeholder="備考"></textarea>
+            <button type="button" class="register-btn">登録</button>
+        </div>
+    </main>
+</body>
+</html>
