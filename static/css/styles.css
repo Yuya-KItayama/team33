@@ -1,0 +1,359 @@
+/* Reset styles */
+/* Include Destyle.css reset styles here */
+
+/* Common styles */
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: #d4f4dd; /* 淡い緑色 */
+}
+
+header {
+    background-color: #b2ebf2; /* 淡い水色 */
+    text-align: left;
+    padding: 10px 20px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #333; /* 黒 */
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 画面の高さいっぱいに表示 */
+}
+
+/* Link styles */
+.link-container {
+    text-align: center;
+}
+
+.link {
+    display: inline-block;
+    margin: 20px;
+    padding: 15px 30px;
+    background-color: #f48fb1; /* 淡いピンク */
+    color: #fff; /* 白 */
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.link:hover {
+    background-color: #ff80ab; /* より濃いピンク */
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: #d4f4dd; /* 淡い緑色 */
+}
+
+header {
+  background-color: #b2ebf2; /* 淡い水色 */
+  text-align: left;
+  padding: 10px 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #333; /* 黒 */
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 画面の高さいっぱいに表示 */
+}
+
+/* Search form styles */
+.search-form {
+  text-align: center;
+}
+
+input[type="text"] {
+  padding: 10px;
+  margin: 20px;
+  width: 300px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background: white;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #f48fb1; /* 淡いピンク */
+  color: #fff; /* 白 */
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff80ab; /* より濃いピンク */
+}
+
+
+
+
+/* 交配情報登録画面 */
+
+.flower-selection-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.flower-selector {
+  margin: 0 20px;
+  text-align: center;
+}
+
+.flower-select {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 90%;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.flower-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+.remarks-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.remarks {
+  width: 70%;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  height: 100px;
+  resize: none;
+}
+
+.register-btn {
+  width: 20%;
+  padding: 10px 20px;
+  background-color: #f48fb1; /* 淡いピンク */
+  color: #fff; /* 白 */
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-btn:hover {
+  background-color: #ff80ab; /* より濃いピンク */
+}
+
+/* 親株登録画面スタイル */
+
+.parent-plant-registration {
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+  padding: 20px;
+  height: auto; /* 画面の高さを自動に設定 */
+}
+
+.image-upload-section, .plant-info-section {
+  flex: 1;
+  padding: 20px;
+}
+
+.upload-label {
+  display: block;
+  background-color: #f48fb1; /* 淡いピンク */
+  color: #fff; /* 白 */
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.image-upload {
+  display: none;
+}
+
+.image-preview {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.plant-info-select, .remarks {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.remarks {
+  height: 100px;
+  resize: none;
+}
+
+/* 交配情報表示＆子情報登録画面スタイル */
+.hybrid-info-registration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.parent-plant-images {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.male-plant, .female-plant {
+  margin: 0 20px;
+  text-align: center;
+}
+
+.offspring-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.offspring-plant {
+  margin: 10px;
+  width: calc(25% - 20px); /* 4つの画像を横一列に配置 */
+}
+
+.offspring-registration {
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.image-upload-section, .plant-info-section {
+  flex: 1;
+  padding: 20px;
+}
+
+/* 既存のスタイル（.upload-label, .image-upload, .image-preview, .plant-info-select, .remarks, .register-btn
+
+/* 株情報詳細ページ */
+.plant-detail {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  height: auto; /* 画面の高さを自動に設定 */
+}
+
+.plant-image-section {
+  flex: 1;
+  text-align: center;
+}
+
+.plant-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.plant-id {
+  font-size: 18px;
+  color: #333; /* 黒 */
+}
+
+.plant-info-section {
+  flex: 1;
+  padding: 20px;
+}
+
+.plant-info-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.plant-info-list li {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333; /* 黒 */
+}
+
+.year-list, .date-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.year-list .link, .date-list .link {
+  margin-bottom: 10px;
+}
+
+.breeding-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.breeding-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.plant-image-link {
+  margin-right: 10px;
+}
+
+.plant-image {
+  width: 100px; /* 適宜調整してください */
+  height: auto;
+  border-radius: 10px;
+}
+
+.offspring-images {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 10px;
+}
+
+.offspring-images .plant-image-link {
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.date-display {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.separator {
+  width: 80%;
+  border: 1px solid #ccc; /* 薄い灰色の線 */
+  margin: 10px auto; /* 上下の余白を設定して中央寄せ */
+}
