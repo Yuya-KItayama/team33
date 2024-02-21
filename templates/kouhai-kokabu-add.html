@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>交配情報表示＆子情報登録</title>
+    <link rel="stylesheet" href="destyle.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>交配データ管理アプリ</h1>
+    </header>
+
+    <main class="main hybrid-info-registration">
+        <div class="parent-plant-images">
+            <div class="male-plant">
+                <img src="male-plant.jpg" alt="雄株の写真">
+                <p>ID: 001</p>
+            </div>
+            <div class="female-plant">
+                <img src="female-plant.jpg" alt="雌株の写真">
+                <p>ID: 002</p>
+            </div>
+        </div>
+        <div class="offspring-images">
+            <!-- flaskのfor文を用いた子株の写真表示 -->
+            <!-- {% for offspring in offspring_list %} -->
+            <div class="offspring-plant">
+                <img src="{{ offspring.image_url }}" alt="子株の写真">
+            </div>
+            <!-- {% endfor %} -->
+        </div>
+        <div class="offspring-registration">
+            <div class="image-upload-section">
+                <img id="offspring-image-preview" src="#" alt="アップロードされた画像プレビュー" class="image-preview">
+                <label for="offspring-image-upload" class="upload-label">画像をアップロード</label>
+                <input type="file" id="offspring-image-upload" class="image-upload" accept="image/*">
+            </div>
+            <div class="plant-info-section">
+                <!-- 植物情報入力フォーム -->
+                <select class="plant-info-select">
+                    <option value="">花色を選択</option>
+                </select>
+                <select class="plant-info-select">
+                    <option value="">模様を選択</option>
+                </select>
+                <select class="plant-info-select">
+                    <option value="">咲き方を選択</option>
+                </select>
+                <select class="plant-info-select">
+                    <option value="">形状を選択</option>
+                </select>
+                <textarea class="remarks" placeholder="備考"></textarea>
+                <button type="button" class="register-btn">登録</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
