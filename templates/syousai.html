@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>株情報詳細ページ</title>
-    <link rel="stylesheet" href="destyle.css">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <h1>交配データ管理アプリ</h1>
-    </header>
+{% extends "base.html"%}
+{%block content%}
+
 
     <main class="main plant-detail">
         <div class="plant-image-section">
@@ -30,5 +19,4 @@
             </ul>
         </div>
     </main>
-</body>
-</html>
+{% endblock %}
