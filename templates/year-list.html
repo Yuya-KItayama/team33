@@ -1,26 +1,14 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>年度リスト</title>
-    <link rel="stylesheet" href="destyle.css">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <h1>交配データ管理アプリ</h1>
-    </header>
+{% extends "base.html"%}
+{%block content%}
+
 
     <main class="main">
         <div class="year-list">
-            <a href="date-list.html" class="link">2024年</a>
+            <a href="/year-list/date-list" class="link">2024年</a>
             <!-- 以下のfor文はサーバーサイドのテンプレートエンジン（Flask等）で処理 -->
             <!-- {% for year in years %}
                 <a href="#{{ year }}" class="link">{{ year }}年</a>
             {% endfor %} -->
         </div>
     </main>
-</body>
-</html>
+{% endblock %}
