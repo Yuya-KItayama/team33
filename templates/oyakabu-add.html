@@ -2,30 +2,84 @@
 {%block content%}
 
     <main class="main parent-plant-registration">
-        <div class="image-upload-section">
-            <img id="image-preview" src="#" alt="アップロードされた画像プレビュー" class="image-preview">
-            <label for="image-upload" class="upload-label">画像をアップロード</label>
-            <input type="file" id="image-upload" class="image-upload" accept="image/*">
-        </div>
-        <div class="plant-info-section">
-            <select class="plant-info-select">
-                <option value="">花色を選択</option>
-                <!-- 花色の選択肢 -->
-            </select>
-            <select class="plant-info-select">
-                <option value="">模様を選択</option>
-                <!-- 模様の選択肢 -->
-            </select>
-            <select class="plant-info-select">
-                <option value="">咲き方を選択</option>
-                <!-- 咲き方の選択肢 -->
-            </select>
-            <select class="plant-info-select">
-                <option value="">形状を選択</option>
-                <!-- 形状の選択肢 -->
-            </select>
-            <textarea class="remarks" placeholder="備考"></textarea>
-            <button type="button" class="register-btn">登録</button>
-        </div>
-    </main>
-{% endblock %}
+        <form action="/OyakabuUpload" method="POST" enctype="multipart/form-data">
+            <fieldset class="image-upload-section">
+                <legend>画像ファイル</legend>
+                <img id="image-preview" src="" alt="画像プレビュー" style="max-width: 200px; max-height: 200px;">
+                <label for="image-upload" class="upload-label">画像をアップロード</label>
+                <input name="image" type="file" id="image-upload" class="image-upload" accept="image/jpeg,image/png,image/jpeg,image/jpg" required onchange="previewImage();">
+            </fieldset>
+
+            <fieldset class="plant-info-section">
+                <legend>カテゴリ選択:</legend>
+                <select name="sex" class="plant-info-select" required>
+                    <option value="">花色を選択</option>
+                    <option value="0">雄株</option>
+                    <option value="1">雌株</option>
+                </select>
+                <select name="color" class="plant-info-select" required>
+                    <option value="">花色を選択</option>
+                    <option value="赤">赤</option>
+                    <option value="ピンク">ピンク</option>
+                    <option value="黄色">黄色</option>
+                    <option value="緑">緑</option>
+                    <option value="白">白</option>
+                    <!-- 花色の選択肢 -->
+                </select>
+                <select name="pattern" class="plant-info-select" required>
+                    <option value="">模様を選択</option>
+                    <option value="ノンスポット">ノンスポット</option>
+                    <option value="スポット">スポット</option>
+                    <option value="フラッシュ">フラッシュ</option>
+                    <option value="アイ">アイ</option>
+                    <option value="ブロッチ">ブロッチ</option>
+                    <option value="ベイン">ベイン</option>
+                    <option value="ピコティ">ピコティ</option>
+                    <option value="バイカラー">バイカラー</option>
+                    <option value="ネット">ネット</option>
+                    <!-- 模様の選択肢 -->
+                </select>
+                <select name="blooming" class="plant-info-select" required>
+                    <option value="">咲き方を選択</option>
+                    <option value="シングル">シングル</option>
+                    <option value="セミダブル">セミダブル</option>
+                    <option value="ダブル">ダブル</option>
+                    <!-- 咲き方の選択肢 -->
+                </select>
+                <select name="shape" class="plant-info-select" required>
+                    <option value="">形状を選択</option>
+                    <option value="丸弁">丸弁</option>
+                    <option value="剣弁">剣弁</option>
+                    <!-- 形状の選択肢 -->
+                </select>
+                <legend>タグID:</legend>
+                <textarea name="tgid" class="remarks" placeholder="タグIDを入力してください"></textarea>
+
+                <legend >備考:</legend>
+                <textarea name="remarks" class="remarks" placeholder="備考"></textarea>
+                <input type="submit" value="アップロード" class="register-btn">
+            </fieldset>
+        </form>
+
+    <script>
+    function previewImage() {
+        var preview = document.getElementById('image-preview');
+        var file = document.getElementById('image-upload').files[0];
+        var reader = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+        }
+    }
+    </script>
+
+
+
+    
+    {% endblock %}

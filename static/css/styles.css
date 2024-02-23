@@ -150,7 +150,7 @@ button:hover {
 }
 
 .register-btn {
-  width: 20%;
+  width: auto;
   padding: 10px 20px;
   background-color: #f48fb1; /* 淡いピンク */
   color: #fff; /* 白 */

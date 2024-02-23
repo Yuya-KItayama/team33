@@ -6,14 +6,20 @@
             <div class="flower-selector male-flower">
                 <label for="male-flower-select">雄花の選択</label>
                 <select id="male-flower-select" class="flower-select">
-                    <!-- 雄花の選択オプション -->
+                    <option value="">雄株のダグIDを選択</option>
+                    {% for OkabuId in OkabuIds %}
+                        <option value="{{ OkabuId }}">{{ OkabuId }}</option>
+                    {% endfor %}
                 </select>
                 <img src="" alt="Selected Male Flower" class="flower-image">
             </div>
             <div class="flower-selector female-flower">
                 <label for="female-flower-select">雌花の選択</label>
                 <select id="female-flower-select" class="flower-select">
-                    <!-- 雌花の選択オプション -->
+                    <option value="">雌株のダグIDを選択</option>
+                    {% for MekabuId in MekabuIds %}
+                        <option value="{{ OyakabuId }}">{{ MekabuId }}</option>
+                    {% endfor %}
                 </select>
                 <img src="" alt="Selected Female Flower" class="flower-image">
             </div>
