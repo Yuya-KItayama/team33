@@ -3,6 +3,7 @@
 
     <main class="main parent-plant-registration">
         <form action="/OyakabuUpload" method="POST" enctype="multipart/form-data">
+            <div class ="plants">
             <fieldset class="image-upload-section">
                 <legend>画像ファイル</legend>
                 <img id="image-preview" src="" alt="画像プレビュー" style="max-width: 200px; max-height: 200px;">
@@ -13,7 +14,7 @@
             <fieldset class="plant-info-section">
                 <legend>カテゴリ選択:</legend>
                 <select name="sex" class="plant-info-select" required>
-                    <option value="">花色を選択</option>
+                    <option value="">雄株雌株を選択</option>
                     <option value="0">雄株</option>
                     <option value="1">雌株</option>
                 </select>
@@ -59,6 +60,7 @@
                 <textarea name="remarks" class="remarks" placeholder="備考"></textarea>
                 <input type="submit" value="アップロード" class="register-btn">
             </fieldset>
+            </div>
         </form>
 
     <script>
