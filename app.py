@@ -135,9 +135,6 @@ def KokabuUpload():
         c.close()
     return redirect(f"/kouhaikokabuadd?KokabuId={KokabuId}")
 
-@app.route("/syousai")
-def syousai():
-    return render_template("syousai.html")
 
 @app.route("/yearlist")
 def yearlist():
@@ -159,7 +156,7 @@ def datelist(year):
 
 @app.route("/yearlist/datelist/<year>/<date>")
 def kouhailist(year, date):
-    conn = sqlite3.connect("Oyakabu.db")
+    conn = sqlite3.connect("OyaKabu.db")
     c = conn.cursor()
     c.execute("SELECT * FROM kouhai WHERE substr(date, 1, 10) = ?", (f"{year}-{date}",))
     breeding_infos = c.fetchall()
@@ -176,22 +173,54 @@ def kouhailist(year, date):
     OkabuImages = {}
     MekabuImages = {}
     KokabuImages = {}
+    OkabuId = {}
+    MekabuId = {}
 
     for i, KokabuId in enumerate(KokabuIds):
         OkabuImages[KokabuId] = get_image_from_oyakabutable(OkabuIds[i])
         MekabuImages[KokabuId] = get_image_from_oyakabutable(MekabuIds[i])
         KokabuImages[KokabuId] = get_image_from_kokabutable(KokabuId)
+        OkabuId[KokabuId] = OkabuIds[i]
+        MekabuId[KokabuId] = MekabuIds[i]
+        print(OkabuId,MekabuId)
         if OkabuImages[KokabuId]:  # 結果がある場合のみ処理
             OkabuImages[KokabuId] = OkabuImages[KokabuId][0]  # タプルから値を抽出
         if MekabuImages[KokabuId]:  # 結果がある場合のみ処理
             MekabuImages[KokabuId] = MekabuImages[KokabuId][0] 
+        if OkabuId[KokabuId]:  # 結果がある場合のみ処理
+            OkabuId[KokabuId] = OkabuId[KokabuId][0]  # タプルから値を抽出
+        if MekabuId[KokabuId]:  # 結果がある場合のみ処理
+            MekabuId[KokabuId] = MekabuId[KokabuId][0] 
 
-    
+        print(OkabuId,MekabuId)
        
 
     c.close()
     
-    return render_template("kouhai-list.html", breeding_infos=breeding_infos, date=date, year=year, OkabuImages=OkabuImages, MekabuImages=MekabuImages, KokabuImages=KokabuImages, KokabuIds = KokabuIds)
+    return render_template("kouhai-list.html", breeding_infos=breeding_infos, date=date, year=year, OkabuImages=OkabuImages, MekabuImages=MekabuImages, KokabuImages=KokabuImages, KokabuIds = KokabuIds, OkabuId = OkabuId, MekabuId = MekabuId)
+
+@app.route("/syousai/<OkabuId>")
+def Okabusyousai(ids):
+    conn = sqlite3.connect("OyaKabu.db")
+    c = conn.cursor()
+    c.execute("select color,pattern,blooming,shape,date,image,remark,sex from oyakabu where tgid =?", (ids,))
+    info = c.fetchone()
+    c.close()
+
+    return render_template("syousai.html", Ids = ids, info = info)
+
+@app.route("/syousai/<MekabuId>")
+def Mekabusyousai(ids):
+    conn = sqlite3.connect("OyaKabu.db")
+    c = conn.cursor()
+    c.execute("select color,pattern,blooming,shape,date,image,remark,sex from oyakabu where tgid =?", (ids,))
+    info = c.fetchone()
+    c.close()
+
+    return render_template("syousai.html", Ids = ids, info = info)
+
+
+
 
 def get_image_from_oyakabutable(OyakabuId):
     conn = sqlite3.connect("Oyakabu.db")
@@ -210,6 +239,7 @@ def get_image_from_kokabutable(KokabuId):
     
     c.close()
     return result if result else " "
+
 
 if __name__ == "__main__":
     app.run(port=8888, debug=False)
