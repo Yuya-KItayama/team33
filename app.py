@@ -10,7 +10,7 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-UPLOAD_FOLDER = 'FlowerImage'
+UPLOAD_FOLDER = 'static/img'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route("/oyakabuadd")
@@ -50,11 +50,33 @@ def OyakabuUpload():
 
 @app.route("/kouhaiadd")
 def kouhaiadd():
-    conn = sqlite3.connect("myTask.db")
+    conn = sqlite3.connect("OyaKabu.db")
     c = conn.cursor()
-    c.execute("select tg from oyakabu where sex = 0")
-    
-    return render_template("kouhai-add.html")
+    c.execute("select tgid,image from oyakabu where sex = 0")
+    OkabuIds = []
+    for row in c.fetchall():
+        OkabuIds.append({"tgid":row[0], "image":row[1]})
+    c.execute("select tgid,image from oyakabu where sex = 1")
+    MekabuIds = []
+    for row in c.fetchall():
+        MekabuIds.append({"tgid":row[0], "image":row[1]})
+    conn.close()
+    print(OkabuIds,MekabuIds)
+    return render_template("kouhai-add.html", MekabuIds = MekabuIds , OkabuIds = OkabuIds)
+
+@app.route("/kouhaiupload", methods=['POST'])
+def kouhaiupload():
+    OkabuId = request.form.get("OkabuId")
+    MekabuId = request.form.get("MekabuId")
+    remarks = request.form.get("remarks")
+    KokabuId = OkabuId + "-" + MekabuId
+    date = datetime.date.today()
+    conn = sqlite3.connect("OyaKabu.db")
+    c = conn.cursor()
+    c.execute("insert into kouhai values(null,?,?,?,?,?)",(OkabuId,MekabuId,date,remarks,KokabuId))
+    conn.commit()
+    conn.close()
+    return redirect("/kouhaiadd")
 
 
 @app.route("/kouhaikokabuadd")
