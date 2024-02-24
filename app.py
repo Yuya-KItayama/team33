@@ -171,6 +171,8 @@ def kouhailist(year, date):
     MekabuImages = [get_image_from_oyakabutable(MekabuId) for MekabuId in MekabuIds]
     KokabuImages = [get_image_from_kokabutable(KokabuId) for KokabuId in KokabuIds]
 
+    print(KokabuImages)
+
     c.close()
     
     return render_template("kouhai-list.html", breeding_infos=breeding_infos, date=date, year=year, OkabuImages=OkabuImages, MekabuImages=MekabuImages, KokabuImages=KokabuImages)
@@ -183,6 +185,7 @@ def get_image_from_oyakabutable(image_id):
     c.close()
     return result[0] if result else None
 
+# 同じ子株IDで登録されたimageが複数あるため複数セレクトされた状態になっている。
 def get_image_from_kokabutable(image_id):
     conn = sqlite3.connect("Oyakabu.db")
     c = conn.cursor()
