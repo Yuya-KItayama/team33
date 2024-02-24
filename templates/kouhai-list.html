@@ -8,18 +8,19 @@
     </div>
     <div class="breeding-info-container">
         <!-- breeding_infos の各要素に対してループ -->
-        {% for breeding_info in breeding_infos %}
+        {% for KokabuId in KokabuIds %}
         <div class="breeding-info">
+            <p>{{ KokabuId }}</p>
             <!-- OkabuImage と MekabuImage をそれぞれ表示 -->
             <a href="#male-plant-detail" class="plant-image-link">
-                <img src="{{ url_for('static', filename='img/' + OkabuImages[loop.index0]) }}" alt="雄株の写真" class="plant-image">
+                <img src="{{ url_for('static', filename='img/' + OkabuImages[KokabuId]) }}" alt="雄株の写真" class="plant-image">
             </a>
             <a href="#female-plant-detail" class="plant-image-link">
-                <img src="{{ url_for('static', filename='img/' + MekabuImages[loop.index0]) }}" alt="雌株の写真" class="plant-image">
+                <img src="{{ url_for('static', filename='img/' + MekabuImages[KokabuId]) }}" alt="雌株の写真" class="plant-image">
             </a>
             <!-- 子株の写真（未使用） -->
             <div class="offspring-images">
-                {% for KokabuImage in KokabuImages %}
+                {% for KokabuImage in KokabuImages[KokabuId] %}
                 <a href="#offspring-plant-detail" class="plant-image-link">
                     <img src="{{ url_for('static', filename='img/' + KokabuImage) }}" alt="子株の写真" class="plant-image">
                 </a>

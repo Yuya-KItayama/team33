@@ -99,9 +99,13 @@ def kouhaikokabuadd():
     MekabuImage = c.fetchone()
     if MekabuImage:  # 結果がある場合のみ処理
         (MekabuImage,) = MekabuImage  # タプルから値を抽出
+
+    
+    KokabuImages = get_image_from_kokabutable(KokabuId)
     c.close()
     print(OkabuImage,MekabuImage)
-    return render_template("kouhai-kokabu-add.html", OkabuId = OkabuId, MekabuId = MekabuId, OkabuImage = OkabuImage, MekabuImage = MekabuImage, KokabuId = KokabuId)
+
+    return render_template("kouhai-kokabu-add.html", OkabuId = OkabuId, MekabuId = MekabuId, OkabuImage = OkabuImage, MekabuImage = MekabuImage, KokabuId = KokabuId, KokabuImages = KokabuImages)
 
 @app.route('/kokabuupload', methods=['POST'])
 def KokabuUpload():
@@ -162,37 +166,50 @@ def kouhailist(year, date):
     print(breeding_infos)
     
     # OkabuId と MekabuId の取得
+    KokabuIds = [info[5] for info in breeding_infos] # KokabuId リスト
     OkabuIds = [info[1] for info in breeding_infos]  # OkabuId のリスト
     MekabuIds = [info[2] for info in breeding_infos]  # MekabuId のリスト
-    KokabuIds = [info[5] for info in breeding_infos]  # KokabuId のリスト
+    
+    print(KokabuIds)
     
     # 画像の取得
-    OkabuImages = [get_image_from_oyakabutable(OkabuId) for OkabuId in OkabuIds]
-    MekabuImages = [get_image_from_oyakabutable(MekabuId) for MekabuId in MekabuIds]
-    KokabuImages = [get_image_from_kokabutable(KokabuId) for KokabuId in KokabuIds]
+    OkabuImages = {}
+    MekabuImages = {}
+    KokabuImages = {}
 
-    print(KokabuImages)
+    for i, KokabuId in enumerate(KokabuIds):
+        OkabuImages[KokabuId] = get_image_from_oyakabutable(OkabuIds[i])
+        MekabuImages[KokabuId] = get_image_from_oyakabutable(MekabuIds[i])
+        KokabuImages[KokabuId] = get_image_from_kokabutable(KokabuId)
+        if OkabuImages[KokabuId]:  # 結果がある場合のみ処理
+            OkabuImages[KokabuId] = OkabuImages[KokabuId][0]  # タプルから値を抽出
+        if MekabuImages[KokabuId]:  # 結果がある場合のみ処理
+            MekabuImages[KokabuId] = MekabuImages[KokabuId][0] 
+
+    
+       
 
     c.close()
     
-    return render_template("kouhai-list.html", breeding_infos=breeding_infos, date=date, year=year, OkabuImages=OkabuImages, MekabuImages=MekabuImages, KokabuImages=KokabuImages)
+    return render_template("kouhai-list.html", breeding_infos=breeding_infos, date=date, year=year, OkabuImages=OkabuImages, MekabuImages=MekabuImages, KokabuImages=KokabuImages, KokabuIds = KokabuIds)
 
-def get_image_from_oyakabutable(image_id):
+def get_image_from_oyakabutable(OyakabuId):
     conn = sqlite3.connect("Oyakabu.db")
     c = conn.cursor()
-    c.execute("SELECT image FROM oyakabu WHERE tgid = ?", (image_id,))
+    c.execute("SELECT image FROM oyakabu WHERE tgid = ?", (OyakabuId,))
     result = c.fetchone()
     c.close()
-    return result[0] if result else None
+    return result if result else None
 
 # 同じ子株IDで登録されたimageが複数あるため複数セレクトされた状態になっている。
-def get_image_from_kokabutable(image_id):
+def get_image_from_kokabutable(KokabuId):
     conn = sqlite3.connect("Oyakabu.db")
     c = conn.cursor()
-    c.execute("SELECT image FROM kokabu WHERE KokabuId = ?", (image_id,))
+    c.execute("SELECT image FROM kokabu WHERE KokabuId = ?", (KokabuId,))
     result = c.fetchone()
+    
     c.close()
-    return result[0] if result else None
+    return result if result else " "
 
 if __name__ == "__main__":
     app.run(port=8888, debug=False)

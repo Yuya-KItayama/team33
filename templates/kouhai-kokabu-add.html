@@ -4,21 +4,21 @@
     <main class="main hybrid-info-registration">
         <div class="parent-plant-images">
             <div class="male-plant">
-                <img src="../static/img/{{OkabuImage}}" alt="雄株の写真" style="max-width: 500px; max-height: 500px;">
+                <img src="../static/img/{{OkabuImage}}" alt="雄株の写真" style="max-width: 200px; max-height: 200px;">
                 <p>雄株ID:{{OkabuId}}</p>
             </div>
             <div class="female-plant">
-                <img src="../static/img/{{MekabuImage}}" alt="雌株の写真" style="max-width: 500px; max-height: 500px;">
+                <img src="../static/img/{{MekabuImage}}" alt="雌株の写真" style="max-width: 200px; max-height: 200px;">
                 <p>雌株ID:{{MekabuId}}</p>
             </div>
         </div>
         <div class="offspring-images">
             <!-- flaskのfor文を用いた子株の写真表示 -->
-            <!-- {% for offspring in offspring_list %} -->
+            {% for KokabuImage in KokabuImages %}
             <div class="offspring-plant">
-                <img src="{{ offspring.image_url }}" alt="子株の写真">
+                <img src="{{ url_for('static', filename='img/' + KokabuImage) }}" alt="子株の写真" style="max-width: 200px; max-height: 200px;">
             </div>
-            <!-- {% endfor %} -->
+            {% endfor %}
         </div>
             <form action="/kokabuupload" method="POST" enctype="multipart/form-data">
                 <fieldset class="image-upload-section">
