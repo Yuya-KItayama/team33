@@ -1,34 +1,35 @@
 {% extends "base.html"%}
-{%block content%}
+{% block content %}
 
-    <main class="main">
-        <!-- 日付の表示 -->
-        <div class="date-display">
-            <h2>2月4日</h2>
-        </div>
-
-        <div class="breeding-info-container">
-            <!-- 以下のリストはサーバーサイドで動的に生成されることを想定しています -->
-            <!-- {% for breeding_info in breeding_infos %} -->
-            <div class="breeding-info">
-                <a href="#male-plant-detail" class="plant-image-link">
-                    <img src="male-plant.jpg" alt="雄株の写真" class="plant-image">
+<main class="main">
+    <!-- 日付の表示 -->
+    <div class="date-display">
+        <h2>{{ date }}</h2>
+    </div>
+    <img src="../static/img/{{ MekabuImages[0] }}" alt="雌株の写真" class="plant-image">
+    <div class="breeding-info-container">
+        <!-- breeding_infos の各要素に対してループ -->
+        {% for breeding_info in breeding_infos %}
+        <div class="breeding-info">
+            <!-- OkabuImage と MekabuImage をそれぞれ表示 -->
+            <a href="#male-plant-detail" class="plant-image-link">
+                <img src="../static/img/{{ OkabuImages[loop.index0] }}" alt="雄株の写真" class="plant-image">
+            </a>
+            <a href="#female-plant-detail" class="plant-image-link">
+                <img src="../static/img/{{ MekabuImages[loop.index0] }}" alt="雌株の写真" class="plant-image">
+            </a>
+            <!-- 子株の写真（未使用） -->
+            <div class="offspring-images">
+                <!-- {% for offspring in breeding_info.offspring %}
+                <a href="#offspring-plant-detail" class="plant-image-link">
+                    <img src="offspring-plant.jpg" alt="子株の写真" class="plant-image">
                 </a>
-                <a href="#female-plant-detail" class="plant-image-link">
-                    <img src="female-plant.jpg" alt="雌株の写真" class="plant-image">
-                </a>
-                <div class="offspring-images">
-                    <!-- 子株の写真は複数存在する可能性があるため、こちらもサーバーサイドで動的に生成 -->
-                    <!-- {% for offspring in breeding_info.offspring %} -->
-                    <a href="#offspring-plant-detail" class="plant-image-link">
-                        <img src="offspring-plant.jpg" alt="子株の写真" class="plant-image">
-                    </a>
-                    <!-- {% endfor %} -->
-                </div>
+                {% endfor %} -->
             </div>
-            <hr class="separator"> <!-- リスト間の横線 -->
-            <!-- {% endfor %} -->
         </div>
-    </main>
-{% endblock %}
+        <hr class="separator"> <!-- リスト間の横線 -->
+        {% endfor %}
+    </div>
+</main>
 
+{% endblock %}

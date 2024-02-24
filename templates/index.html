@@ -5,10 +5,9 @@
             <a href="/oyakabuadd" class="link">親株登録</a>
             <a href="/kouhaiadd" class="link">交配情報登録</a>
             <a href="/yearlist" class="link">交配日誌</a>
-            <a href="/kouhaikokabuadd" class="link">交配情報ページ（仮）</a>
-            <form class="search-form">
-                <input type="text" placeholder="検索キーワードを入力してください">
-                <button type="submit">検索</button>
+            <form action="/kouhaikokabuadd" class="search-form" method="get">
+                <input name="KokabuId" type="text" placeholder="検索キーワードを入力してください">
+                <input type="submit" value="検索" class="register-btn">
             </form>
         </div>
     </main>
