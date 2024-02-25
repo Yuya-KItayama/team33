@@ -1,14 +1,13 @@
-{% extends "base.html"%}
-{%block content%}
+{%  extends "base.html" %}
+{%  block content   %}
 
 
     <main class="main">
         <div class="year-list">
-            <a href="/yearlist/datelist" class="link">2024年</a>
             <!-- 以下のfor文はサーバーサイドのテンプレートエンジン（Flask等）で処理 -->
-            <!-- {% for year in years %}
-                <a href="#{{ year }}" class="link">{{ year }}年</a>
-            {% endfor %} -->
+            {% for year in years %}
+                <a href="/yearlist/datelist/{{ year }}" class="link">{{ year }}年</a>
+            {% endfor %}
         </div>
     </main>
-{% endblock %}
+{%  endblock    %}

@@ -4,18 +4,21 @@
 
     <main class="main plant-detail">
         <div class="plant-image-section">
-            <img src="flower-photo.jpg" alt="花の写真" class="plant-image">
-            <p class="plant-id"><!-- FlaskでIDを表示 {% print plant.id %} --></p>
+            <img src="../static/img/{{info[5]}}" alt="花の写真" class="plant-image">
+            <p class="plant-id">{{ ids }}</p>
         </div>
         <div class="plant-info-section">
             <ul class="plant-info-list">
-                <!-- Flaskでデータベースから情報を取得して表示 {% for info in plant_infos %} -->
-                <li>色: <!-- {{ info.color }} --></li>
-                <li>模様: <!-- {{ info.pattern }} --></li>
-                <li>咲き方: <!-- {{ info.blooming }} --></li>
-                <li>形状: <!-- {{ info.shape }} --></li>
-                <li>備考: <!-- {{ info.notes }} --></li>
-                <!-- {% endfor %} -->
+                <li>色: {{ info[0]}} </li>
+                <li>模様: {{ info[1] }}</li>
+                <li>咲き方: {{ info[2] }}</li>
+                <li>形状: {{ info[3] }}</li>
+                <li>備考: {{ info[6] }}</li>
+                <li>株登録: {{ if info[7] = 0:
+                        "雄株"
+                    else:
+                        "雌株"}}</li>
+                <li>登録日: {{ info[4] }}</li>
             </ul>
         </div>
     </main>

@@ -6,8 +6,8 @@
             <section class="flower-selection-section">
                 <div class="flower-selector male-flower">
                     <label for="male-flower-select">雄花の選択</label>
-                    <img src="" alt="Selected Male Flower" class="flower-image">
-                    <select name="OkabuId" id="male-flower-select" class="flower-select">
+                    <img src="" alt="Selected Male Flower" class="flower-image" style="max-width: 200px; max-height: 200px;">
+                    <select name="OkabuId" id="male-flower-select" class="flower-select" >
                         <option value="">雄株のダグIDを選択</option>
                         {% for OkabuId in OkabuIds %}
                             <option value="{{ OkabuId['tgid'] }}" data-image="{{ OkabuId['image'] }}">{{ OkabuId['tgid'] }}</option>
@@ -16,7 +16,7 @@
                 </div>
                 <div class="flower-selector female-flower">
                     <label for="female-flower-select">雌花の選択</label>
-                    <img src="" alt="Selected Female Flower" class="flower-image">
+                    <img src="" alt="Selected Female Flower" class="flower-image" style="max-width: 200px; max-height: 200px;">
                     <select name="MekabuId" id="female-flower-select" class="flower-select">
                         <option value="">雌株のダグIDを選択</option>
                         {% for MekabuId in MekabuIds %}
