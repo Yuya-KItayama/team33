@@ -172,7 +172,6 @@ flex-wrap: wrap; /* 画面が狭くなるときに要素を折り返す */
 justify-content: center;
 align-items: start;
 padding: 20px;
-
 }
 
 .image-upload-section {
@@ -203,11 +202,14 @@ margin-bottom: 20px; /* 要素間の余白を追加 */
 }
 
 .parent-plant-registration {
-  display: flex;
+  display: flex
+}
+.parent-plant-registration {  
   justify-content: space-around;
   align-items: start;
   padding: 20px;
-  height: auto; /* 画面の高さを自動に設定 */
+  height: auto;  /* 画面の高さを自動に設定 */
+
 }
 
 .image-upload-section {
