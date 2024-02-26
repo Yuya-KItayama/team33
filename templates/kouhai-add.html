@@ -1,7 +1,14 @@
 {% extends "base.html"%}
 {%block content%}
 
+                <!-- 戻るボタン -->
+                <div class="oyakabu-container">
+                    <button type="button" onclick="goBack()" class="back-btn">戻る</button>
+                    </div>
+                    <!-- 戻るボタン終わり -->
+
     <main class="main">
+
         <form action="/kouhaiupload" method="POST" enctype="multipart/form-data">
             <section class="flower-selection-section">
                 <div class="flower-selector male-flower">
@@ -30,6 +37,9 @@
                 <input type="submit" value="登録" class="register-btn">
             </div>
         </form>
+      
+
+   
     </main>
 
     <script>
@@ -50,5 +60,27 @@
         });
     </script>
 
+   <!-- 戻るjscript -->
+   <script>
+    function goBack() {
+        window.history.back();
+    }
+
+    function previewImage() {
+        var preview = document.getElementById('image-preview');
+        var file = document.getElementById('image-upload').files[0];
+        var reader = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+        }
+    }
+</script>
     
 {% endblock %}
