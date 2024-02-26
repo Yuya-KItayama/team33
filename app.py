@@ -101,10 +101,10 @@ def kouhaikokabuadd():
         (MekabuImage,) = MekabuImage  # タプルから値を抽出
 
     KokabuImages = []
-    KokabuImages = get_image_from_kokabutable(KokabuId)
-    for KokabuImage in KokabuImages:
-        if KokabuImage:  # 結果がある場合のみ処理
-            (KokabuImages,) = KokabuImage  # タプルから値を抽出
+    images = get_images_from_kokabutable(KokabuId)
+    for image in images:
+        if image:  # 結果がある場合のみ処理
+            KokabuImages.append(image[0]) 
 
 
     c.close()
