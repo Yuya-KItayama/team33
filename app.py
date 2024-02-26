@@ -100,8 +100,12 @@ def kouhaikokabuadd():
     if MekabuImage:  # 結果がある場合のみ処理
         (MekabuImage,) = MekabuImage  # タプルから値を抽出
 
-    
-    KokabuImages = get_image_from_kokabutable(KokabuId)
+    KokabuImages = [get_images_from_kokabutable(KokabuId)]
+    print(KokabuImages)
+    if KokabuImages:  # 結果がある場合のみ処理
+        (KokabuImages,) = KokabuImages  # タプルから値を抽出
+
+
     c.close()
     print(OkabuImage,MekabuImage)
 
@@ -234,6 +238,16 @@ def get_image_from_kokabutable(KokabuId):
     c = conn.cursor()
     c.execute("SELECT image FROM kokabu WHERE KokabuId = ?", (KokabuId,))
     result = c.fetchone()
+    
+    c.close()
+    return result if result else " "
+
+def get_images_from_kokabutable(KokabuId):
+    conn = sqlite3.connect("Oyakabu.db")
+    c = conn.cursor()
+    c.execute("SELECT image FROM kokabu WHERE KokabuId = ?", (KokabuId,))
+    result = c.fetchall()
+    print(result)
     
     c.close()
     return result if result else " "
