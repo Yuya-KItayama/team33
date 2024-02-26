@@ -182,17 +182,14 @@ def kouhailist(year, date):
         KokabuImages[KokabuId] = get_image_from_kokabutable(KokabuId)
         OkabuId[KokabuId] = OkabuIds[i]
         MekabuId[KokabuId] = MekabuIds[i]
-        print(OkabuId,MekabuId)
+        print(OkabuImages,MekabuImages)
+
         if OkabuImages[KokabuId]:  # 結果がある場合のみ処理
             OkabuImages[KokabuId] = OkabuImages[KokabuId][0]  # タプルから値を抽出
         if MekabuImages[KokabuId]:  # 結果がある場合のみ処理
             MekabuImages[KokabuId] = MekabuImages[KokabuId][0] 
-        if OkabuId[KokabuId]:  # 結果がある場合のみ処理
-            OkabuId[KokabuId] = OkabuId[KokabuId][0]  # タプルから値を抽出
-        if MekabuId[KokabuId]:  # 結果がある場合のみ処理
-            MekabuId[KokabuId] = MekabuId[KokabuId][0] 
-
-        print(OkabuId,MekabuId)
+    
+    print(KokabuImages)
        
 
     c.close()
@@ -200,24 +197,26 @@ def kouhailist(year, date):
     return render_template("kouhai-list.html", breeding_infos=breeding_infos, date=date, year=year, OkabuImages=OkabuImages, MekabuImages=MekabuImages, KokabuImages=KokabuImages, KokabuIds = KokabuIds, OkabuId = OkabuId, MekabuId = MekabuId)
 
 @app.route("/syousai/<OkabuId>")
-def Okabusyousai(ids):
+def Okabusyousai(OkabuId):
+    print(OkabuId)
     conn = sqlite3.connect("OyaKabu.db")
     c = conn.cursor()
-    c.execute("select color,pattern,blooming,shape,date,image,remark,sex from oyakabu where tgid =?", (ids,))
+    c.execute("select color,pattern,blooming,shape,date,image,remark,sex from oyakabu where tgid =?", (OkabuId,))
     info = c.fetchone()
     c.close()
 
-    return render_template("syousai.html", Ids = ids, info = info)
+    return render_template("syousai.html", Ids = OkabuId, info = info)
 
 @app.route("/syousai/<MekabuId>")
-def Mekabusyousai(ids):
+def Mekabusyousai(MekabuId):
+    print(MekabuId)
     conn = sqlite3.connect("OyaKabu.db")
     c = conn.cursor()
-    c.execute("select color,pattern,blooming,shape,date,image,remark,sex from oyakabu where tgid =?", (ids,))
+    c.execute("select color,pattern,blooming,shape,date,image,remark,sex from oyakabu where tgid =?", (MekabuId,))
     info = c.fetchone()
     c.close()
 
-    return render_template("syousai.html", Ids = ids, info = info)
+    return render_template("syousai.html", Ids = MekabuId, info = info)
 
 
 
@@ -230,7 +229,6 @@ def get_image_from_oyakabutable(OyakabuId):
     c.close()
     return result if result else None
 
-# 同じ子株IDで登録されたimageが複数あるため複数セレクトされた状態になっている。
 def get_image_from_kokabutable(KokabuId):
     conn = sqlite3.connect("Oyakabu.db")
     c = conn.cursor()
