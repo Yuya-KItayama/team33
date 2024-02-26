@@ -424,3 +424,51 @@ margin-bottom: 20px; /* 要素間の余白を追加 */
 }
 
 
+
+/* 戻るボタン */
+
+.back-btn {
+  display: inline-block;
+  padding: 15px 25px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px; /* 上部のマージンを調整して近づける */
+  margin-right: 10px; /* 必要に応じて右側のマージンを追加 */
+  font-size: 16px;
+}
+
+/* 親株登録画面スタイルの微調整 */
+.plants {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* 中央配置を修正 */
+  align-items: stretch; /* 高さを均等に */
+  padding: 20px;
+}
+
+.image-upload-section, .plant-info-section {
+  flex: 1 1 48%; /* 要素の幅を調整 */
+  margin-bottom: 20px;
+}
+
+/* 戻るボタンがヘッダーに被らないように */
+.header-with-back-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+/* oyakabu.html のクラスを利用して戻るボタンを配置 */
+.oyakabu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.oyakabu-container .back-btn {
+  margin-top: 20px; /* 必要に応じて調整 */
+}

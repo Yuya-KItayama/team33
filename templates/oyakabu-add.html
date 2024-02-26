@@ -2,7 +2,13 @@
 {%block content%}
 
     <main class="main parent-plant-registration">
+  
         <form action="/OyakabuUpload" method="POST" enctype="multipart/form-data">
+              <!-- 戻るボタン -->
+    <div class="oyakabu-container">
+        <button type="button" onclick="goBack()" class="back-btn">戻る</button>
+        </div>
+        <!-- 戻るボタン終わり -->
             <div class ="plants">
             <fieldset class="image-upload-section">
                 <legend>画像ファイル</legend>
@@ -61,6 +67,7 @@
                 <input type="submit" value="アップロード" class="register-btn">
             </fieldset>
             </div>
+       
         </form>
 
     <script>
@@ -79,6 +86,29 @@
             preview.src = "";
         }
     }
+    </script>
+    
+    <!-- 戻るjscript -->
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        function previewImage() {
+            var preview = document.getElementById('image-preview');
+            var file = document.getElementById('image-upload').files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";
+            }
+        }
     </script>
 
 
