@@ -328,7 +328,7 @@ margin-bottom: 20px; /* 要素間の余白を追加 */
 /* 株情報詳細ページ */
 .plant-detail {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   padding: 20px;
   height: auto; /* 画面の高さを自動に設定 */
   margin-top: 50px;
