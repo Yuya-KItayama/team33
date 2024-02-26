@@ -20,9 +20,7 @@
             <!-- flaskのfor文を用いた子株の写真表示 -->
             {% for KokabuImage in KokabuImages %}
             <div class="offspring-plant">
-                <a href="/syousai" class="plant-image-link">
                     <img src="{{ url_for('static', filename='img/' + KokabuImage) }}" alt="子株の写真" style="max-width: 200px; max-height: 200px;">
-                </a>
             </div>
             {% endfor %}
         </div>
