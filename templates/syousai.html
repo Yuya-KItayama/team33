@@ -5,7 +5,7 @@
     <main class="main plant-detail">
         <div class="plant-image-section">
             <img src="../static/img/{{info[5]}}" alt="花の写真" class="plant-image">
-            <p class="plant-id">{{ ids }}</p>
+            <p class="plant-id">{{ Ids }}</p>
         </div>
         <div class="plant-info-section">
             <ul class="plant-info-list">
@@ -14,10 +14,13 @@
                 <li>咲き方: {{ info[2] }}</li>
                 <li>形状: {{ info[3] }}</li>
                 <li>備考: {{ info[6] }}</li>
-                <li>株登録: {{ if info[7] = 0:
-                        "雄株"
-                    else:
-                        "雌株"}}</li>
+                <li>株登録: 
+                    {% if info[7] == "0" %}
+                        雄株
+                    {% else %}
+                        雌株
+                    {% endif %}
+                    </li>
                 <li>登録日: {{ info[4] }}</li>
             </ul>
         </div>
