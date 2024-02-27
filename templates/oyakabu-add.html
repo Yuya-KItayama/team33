@@ -1,18 +1,19 @@
 {% extends "base.html"%}
 {%block content%}
 
+<div class="oyakabu-container">
+    <a href="/">
+        <button type="button" class="back-btn">戻る</button>
+    </a>
+
     <main class="main parent-plant-registration">
   
         <form action="/OyakabuUpload" method="POST" enctype="multipart/form-data">
-              <!-- 戻るボタン -->
-    <div class="oyakabu-container">
-        <button type="button" onclick="goBack()" class="back-btn">戻る</button>
-    </div>
-        <!-- 戻るボタン終わり -->
+
             <div class ="plants">
             <fieldset class="image-upload-section">
                 <legend>画像ファイル</legend>
-                <img id="image-preview" src="" alt="画像プレビュー" style="max-width: 200px; max-height: 200px;">
+                <img id="image-preview" class="image-previewoyakabuadd" src="" alt="画像プレビュー" style="max-width: 200px; max-height: 200px;">
                 <label for="image-upload" class="upload-label">画像をアップロード</label>
                 <input name="image" type="file" id="image-upload" class="image-upload" accept="image/jpeg,image/png,image/jpeg,image/jpg" required onchange="previewImage();">
             </fieldset>
