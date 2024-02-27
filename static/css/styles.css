@@ -21,6 +21,7 @@ h1 {
 
 .main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh; /* 画面の高さいっぱいに表示 */
@@ -66,9 +67,11 @@ h1 {
 
 .main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh; /* 画面の高さいっぱいに表示 */
+  margin-top: 0;
 }
 
 /* Search form styles */
@@ -231,7 +234,7 @@ margin-bottom: 20px; /* 要素間の余白を追加 */
 }
 .parent-plant-registration {  
   justify-content: space-around;
-  align-items: start;
+  align-items: center;
   padding: 20px;
   height: auto;  /* 画面の高さを自動に設定 */
 
@@ -282,46 +285,42 @@ margin-bottom: 20px; /* 要素間の余白を追加 */
 }
 
 /* 交配情報表示＆子情報登録画面スタイル */
+
 .hybrid-info-registration {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+  margin-top: 150px;
+  margin-bottom: 20px;
 }
 
 .parent-plant-images {
   display: flex;
-  justify-content: center;
-  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 20px;
 }
 
 .male-plant, .female-plant {
-  margin: 0 20px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .offspring-images {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .offspring-plant {
   margin: 10px;
-  width: calc(25% - 20px); /* 4つの画像を横一列に配置 */
-}
-
+  width: calc(33.33% - 20px); /* 3枚の写真で横幅を等分し、左右のマージンの合計を引く */}
+  
 .offspring-registration {
   display: flex;
+  flex-direction: column;
   width: 100%;
   margin-top: 20px;
+  align-items: center;
 }
 
-.image-upload-section, .plant-info-section {
-  flex: 1;
-  padding: 20px;
-}
+
 
 /* 既存のスタイル（.upload-label, .image-upload, .image-preview, .plant-info-select, .remarks, .register-btn
 
@@ -372,6 +371,9 @@ margin-bottom: 20px; /* 要素間の余白を追加 */
   flex-direction: column;
   align-items: center;
   padding-top: 20px;
+  position: absolute;
+  top: 200px; /* 必要な位置に調整してください */
+
 }
 
 .year-list .link, .date-list .link {
@@ -404,7 +406,6 @@ margin-bottom: 20px; /* 要素間の余白を追加 */
 .offspring-images {
   display: flex;
   flex-wrap: wrap;
-  margin-left: 10px;
 }
 
 .offspring-images .plant-image-link {
@@ -426,18 +427,29 @@ margin-bottom: 20px; /* 要素間の余白を追加 */
 
 
 /* 戻るボタン */
+.back-btn-container {
+  text-align: center;
+  margin-bottom: 600px; /* 年の上にスペースを作成 */
+  margin-left: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
 
 .back-btn {
-  display: inline-block;
+  /* display: inline-block; */
   padding: 15px 25px;
   background-color: #f48fb1;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 10px; /* 上部のマージンを調整して近づける */
-  margin-right: 10px; /* 必要に応じて右側のマージンを追加 */
   font-size: 16px;
+  margin-top: 5px;
+  margin-right: 170px;
+  text-align: center;
 }
 
 /* 親株登録画面スタイルの微調整 */

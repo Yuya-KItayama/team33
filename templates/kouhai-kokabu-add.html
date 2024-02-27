@@ -1,15 +1,22 @@
 {% extends "base.html"%}
 {%block content%}
+<header>
+    <!-- Header content here -->
+</header>
 
-    <main class="main hybrid-info-registration">
+    
+
+       
+    
+        <main class="main hybrid-info-registration">
         <div class="parent-plant-images">
-            <div class="male-plant">
+            <div class="male-plant plant-image-link">
                 <a href="/syousai/{{OkabuId}}" class="plant-image-link">
                     <img src="../static/img/{{OkabuImage}}" alt="雄株の写真" style="max-width: 200px; max-height: 200px;">
                     <p>雄株ID:{{OkabuId}}</p>
                 </a>
             </div>
-            <div class="female-plant">
+            <div class="female-plant plant-image-link">
                 <a href="/syousai/{{MekabuId}}" class="plant-image-link">
                     <img src="../static/img/{{MekabuImage}}" alt="雌株の写真" style="max-width: 200px; max-height: 200px;">
                     <p>雌株ID:{{MekabuId}}</p>
@@ -20,7 +27,7 @@
             <!-- flaskのfor文を用いた子株の写真表示 -->
             {% for KokabuImage in KokabuImages %}
             <div class="offspring-plant">
-                    <img src="{{ url_for('static', filename='img/' + KokabuImage) }}" alt="子株の写真" style="max-width: 200px; max-height: 200px;">
+                    <img src="{{ url_for('static', filename='img/' + KokabuImage) }}" alt="子株の写真" style="max-width: 150px; max-height: 150px;">
             </div>
             {% endfor %}
         </div>
@@ -36,11 +43,16 @@
                     <legend>カテゴリ選択:</legend>
                     <select name="color" class="plant-info-select" required>
                         <option value="">花色を選択</option>
-                        <option value="赤">赤</option>
-                        <option value="ピンク">ピンク</option>
-                        <option value="黄色">黄色</option>
-                        <option value="緑">緑</option>
-                        <option value="白">白</option>
+                        <option value="パープル">パープル</option>
+                    <option value="クリーム">クリーム</option>
+                    <option value="ホワイト">ホワイト</option>
+                    <option value="イエロー">イエロー</option>
+                    <option value="グリーン">グリーン</option>
+                    <option value="アプリコット">アプリコット</option>
+                    <option value="ピンク">ピンク</option>
+                    <option value="レッド">レッド</option>
+                    <option value="白ブラック">ブラック</option>
+                    <option value="グレー">グレー</option>
                         <!-- 花色の選択肢 -->
                     </select>
                     <select name="pattern" class="plant-info-select" required>
@@ -95,5 +107,8 @@
             }
         }
         </script>
+
+
+
 
 {% endblock %}
