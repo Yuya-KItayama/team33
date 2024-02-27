@@ -246,6 +246,11 @@ margin-bottom: 20px; /* 要素間の余白を追加 */
   width: 100%;
   margin: 100px;
 }
+.image-upload-section-kokabu-add {
+  flex: 1;
+  padding: 20px;
+  width: 100%;
+}
 
 .upload-label {
   display: block;
@@ -487,6 +492,7 @@ margin-bottom: 20px; /* 要素間の余白を追加 */
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 50px
 }
 
 .oyakabu-container .back-btn {

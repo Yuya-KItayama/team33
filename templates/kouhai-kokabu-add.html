@@ -1,11 +1,13 @@
 {% extends "base.html"%}
 {%block content%}
-
 <div class="oyakabu-container">
     <a href="/">
         <button type="button" class="back-btn">戻る</button>
     </a>
-       
+</div>
+
+<div class="oyakabu-container">
+
     
         <main class="main hybrid-info-registration">
         <div class="parent-plant-images">
@@ -31,7 +33,7 @@
             {% endfor %}
         </div>
             <form action="/kokabuupload" method="POST" enctype="multipart/form-data">
-                <fieldset class="image-upload-section">
+                <fieldset class="image-upload-section-kokabu-add">
                     <legend>画像ファイル</legend>
                     <img id="image-preview" src="" alt="画像プレビュー" style="max-width: 200px; max-height: 200px;">
                     <label for="image-upload" class="upload-label">画像をアップロード</label>
