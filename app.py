@@ -227,6 +227,8 @@ def Mekabusyousai(MekabuId):
 
 
 
+
+
 def get_image_from_oyakabutable(OyakabuId):
     conn = sqlite3.connect("Oyakabu.db")
     c = conn.cursor()
