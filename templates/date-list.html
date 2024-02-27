@@ -6,6 +6,11 @@
     </a>
 </div>
     <main class="main">
+
+        <div class="back-btn-container">
+            <button type="button" onclick="goBack()" class="back-btn">戻る</button>
+        </div>
+
         <div class="year-list">
             <!-- 以下のfor文はサーバーサイドのテンプレートエンジン（Flask等）で処理 -->
             {% for date in dates %}
@@ -13,4 +18,27 @@
             {% endfor %}
         </div>
     </main>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        function previewImage() {
+            var preview = document.getElementById('image-preview');
+            var file = document.getElementById('image-upload').files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";
+            }
+        }
+    </script>
+
 {% endblock %}

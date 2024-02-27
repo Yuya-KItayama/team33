@@ -6,7 +6,14 @@
     </a>
 </div>
 
+
     <main class="main">
+
+        <div class="back-btn-container">
+            <button type="button" onclick="goBack()" class="back-btn">戻る</button>
+        </div>
+        
+        
         <div class="year-list">
             <!-- 以下のfor文はサーバーサイドのテンプレートエンジン（Flask等）で処理 -->
             {% for year in years %}
@@ -15,5 +22,5 @@
         </div>
         
     </main>
-    
+
 {%  endblock    %}
