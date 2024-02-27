@@ -244,7 +244,7 @@ margin-bottom: 20px; /* 要素間の余白を追加 */
   flex: 1;
   padding: 20px;
   width: 100%;
-  margin-right: 100px;
+  margin: 100px;
 }
 
 .upload-label {
@@ -262,6 +262,15 @@ margin-bottom: 20px; /* 要素間の余白を追加 */
   display: none;
 }
 
+.image-previewoyakabuadd {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  margin : 10% 27%;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
 .image-preview {
   display: block;
   max-width: 100%;
@@ -448,7 +457,6 @@ margin-bottom: 20px; /* 要素間の余白を追加 */
   cursor: pointer;
   font-size: 16px;
   margin-top: 5px;
-  margin-right: 170px;
   text-align: center;
 }
 
