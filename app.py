@@ -165,7 +165,6 @@ def kouhailist(year, date):
     c = conn.cursor()
     c.execute("SELECT * FROM kouhai WHERE substr(date, 1, 10) = ?", (f"{year}-{date}",))
     breeding_infos = c.fetchall()
-    print(breeding_infos)
     
     # OkabuId と MekabuId の取得
     KokabuIds = [info[5] for info in breeding_infos] # KokabuId リスト
@@ -182,12 +181,14 @@ def kouhailist(year, date):
     MekabuId = {}
 
     for i, KokabuId in enumerate(KokabuIds):
+        print(KokabuId)
         OkabuImages[KokabuId] = get_image_from_oyakabutable(OkabuIds[i])
         MekabuImages[KokabuId] = get_image_from_oyakabutable(MekabuIds[i])
-        KokabuImages[KokabuId] = get_image_from_kokabutable(KokabuId)
+        KokabuImages[KokabuId] = get_images_from_kokabutable(KokabuId)
+        
         OkabuId[KokabuId] = OkabuIds[i]
         MekabuId[KokabuId] = MekabuIds[i]
-        print(OkabuImages,MekabuImages)
+        
 
         if OkabuImages[KokabuId]:  # 結果がある場合のみ処理
             OkabuImages[KokabuId] = OkabuImages[KokabuId][0]  # タプルから値を抽出
@@ -251,7 +252,7 @@ def get_images_from_kokabutable(KokabuId):
     print(result)
     
     c.close()
-    return result if result else " "
+    return [item[0] for item in result] if result else " "
 
 
 if __name__ == "__main__":
