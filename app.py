@@ -101,7 +101,7 @@ def kouhaikokabuadd():
         (MekabuImage,) = MekabuImage  # タプルから値を抽出
 
     KokabuImages = []
-    images = get_images_from_kokabutable(KokabuId)
+    images = get_images1_from_kokabutable(KokabuId)
     for image in images:
         if image:  # 結果がある場合のみ処理
             KokabuImages.append(image[0]) 
@@ -184,7 +184,7 @@ def kouhailist(year, date):
         print(KokabuId)
         OkabuImages[KokabuId] = get_image_from_oyakabutable(OkabuIds[i])
         MekabuImages[KokabuId] = get_image_from_oyakabutable(MekabuIds[i])
-        KokabuImages[KokabuId] = get_images_from_kokabutable(KokabuId)
+        KokabuImages[KokabuId] = get_images2_from_kokabutable(KokabuId)
         
         OkabuId[KokabuId] = OkabuIds[i]
         MekabuId[KokabuId] = MekabuIds[i]
@@ -244,7 +244,16 @@ def get_image_from_kokabutable(KokabuId):
     c.close()
     return result if result else " "
 
-def get_images_from_kokabutable(KokabuId):
+def get_images1_from_kokabutable(KokabuId):
+    conn = sqlite3.connect("Oyakabu.db")
+    c = conn.cursor()
+    c.execute("SELECT image FROM kokabu WHERE KokabuId = ?", (KokabuId,))
+    result = c.fetchall()
+    print(result)    
+    c.close()
+    return result if result else " "
+
+def get_images2_from_kokabutable(KokabuId):
     conn = sqlite3.connect("Oyakabu.db")
     c = conn.cursor()
     c.execute("SELECT image FROM kokabu WHERE KokabuId = ?", (KokabuId,))
