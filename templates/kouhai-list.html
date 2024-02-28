@@ -17,10 +17,10 @@
         <div class="breeding-info">
             <p>{{ KokabuId }}</p>
             <!-- OkabuImage と MekabuImage をそれぞれ表示 -->
-            <a href="/syousai/{{ OkabuId[KokabuId] }}" class="plant-image-link">
+            <a href="/syousai/{{ OkabuId[KokabuId] }}/{{ KokabuId }}?ref=kouhailist" class="plant-image-link">
                 <img src="{{ url_for('static', filename='img/' + OkabuImages[KokabuId]) }}" alt="雄株の写真" class="plant-image">
             </a>
-            <a href="/syousai/{{ MekabuId[KokabuId] }}" class="plant-image-link">
+            <a href="/syousai/{{ MekabuId[KokabuId] }}/{{ KokabuId }}?ref=kouhailist" class="plant-image-link">
                 <img src="{{ url_for('static', filename='img/' + MekabuImages[KokabuId]) }}" alt="雌株の写真" class="plant-image">
             </a>
             <!-- 子株の写真（未使用） -->
