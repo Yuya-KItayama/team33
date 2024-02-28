@@ -79,7 +79,9 @@ def kouhaiupload():
 
 @app.route("/kouhaikokabuadd")
 def kouhaikokabuadd():
-    KokabuId = request.args.get("KokabuId")
+    KokabuId = request.args.get('ref')
+    if not KokabuId:
+        KokabuId = request.args.get("KokabuId")
     print(KokabuId)
     conn = sqlite3.connect("Oyakabu.db")
     c = conn.cursor()
@@ -202,27 +204,29 @@ def kouhailist(year, date):
     
     return render_template("kouhai-list.html", breeding_infos=breeding_infos, date=date, year=year, OkabuImages=OkabuImages, MekabuImages=MekabuImages, KokabuImages=KokabuImages, KokabuIds = KokabuIds, OkabuId = OkabuId, MekabuId = MekabuId)
 
-@app.route("/syousai/<OkabuId>")
-def Okabusyousai(OkabuId):
+@app.route("/syousai/<OkabuId>/<KokabuId>")
+def Okabusyousai(OkabuId,KokabuId):
     print(OkabuId)
     conn = sqlite3.connect("OyaKabu.db")
     c = conn.cursor()
     c.execute("select color,pattern,blooming,shape,date,image,remark,sex from oyakabu where tgid =?", (OkabuId,))
     info = c.fetchone()
+    year, date = info[4].split('-', 1)
     c.close()
 
-    return render_template("syousai.html", Ids = OkabuId, info = info)
+    return render_template("syousai.html", Ids = OkabuId, info = info, KokabuId = KokabuId, year = year, date = date)
 
-@app.route("/syousai/<MekabuId>")
-def Mekabusyousai(MekabuId):
+@app.route("/syousai/<MekabuId>/<KokabuId>")
+def Mekabusyousai(MekabuId,KokabuId):
     print(MekabuId)
     conn = sqlite3.connect("OyaKabu.db")
     c = conn.cursor()
     c.execute("select color,pattern,blooming,shape,date,image,remark,sex from oyakabu where tgid =?", (MekabuId,))
     info = c.fetchone()
+    year, date = info[4].split('-', 1)
     c.close()
 
-    return render_template("syousai.html", Ids = MekabuId, info = info)
+    return render_template("syousai.html", Ids = MekabuId, info = info, KokabuId = KokabuId,  year = year, date = date)
 
 
 

@@ -1,13 +1,20 @@
 {% extends "base.html"%}
 {%block content%}
+
 <div class="oyakabu-container">
-    <a href="/">
-        <button type="button" class="back-btn">戻る</button>
-    </a>
+    {% if request.args.get('ref') == 'kouhaikokabuadd' %}
+        <a href="/kouhaikokabuadd?ref={{KokabuId}}">
+            <button type="button" class="back-btn">戻る</button>
+        </a>
+    {% elif request.args.get('ref') == 'kouhailist' %}
+        <a href="/yearlist/datelist/{{year}}/{{date}}">
+            <button type="button" class="back-btn">戻る</button>
+        </a>
+    {% endif %}     
 
     <main class="main plant-detail">
         <div class="plant-image-section">
-            <img src="../static/img/{{info[5]}}" alt="花の写真" class="plant-image">
+            <img src="{{ url_for('static', filename='img/' + info[5]) }}" alt="花の写真" class="plant-image">
             <p class="plant-id">{{ Ids }}</p>
         </div>
         <div class="plant-info-section">
