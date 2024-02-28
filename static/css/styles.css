@@ -9,6 +9,7 @@ body {
 
 header {
     background-color: #b2ebf2; /* 淡い水色 */
+    font-family: 'Noto Sans JP', sans-serif;
     text-align: left;
     padding: 10px 20px;
 }
